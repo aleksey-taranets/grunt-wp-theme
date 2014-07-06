@@ -28,30 +28,30 @@ exports.template = function( grunt, init, done ) {
 		{
 			name   : 'prefix',
 			message: 'PHP function prefix (alpha and underscore characters only)',
-			default: 'wptheme'
+			default: 'alirta'
 		},
-		init.prompt( 'description', 'The best WordPress theme ever made!' ),
-		init.prompt( 'homepage', 'http://wordpress.org/themes' ),
+		init.prompt( 'description', 'Wordpress Theme' ),
+		init.prompt( 'homepage', 'http://alirta.com' ),
 		init.prompt( 'author_name' ),
 		init.prompt( 'author_email' ),
 		init.prompt( 'author_url' ),
 		{
 			name: 'css_type',
 			message: 'CSS Preprocessor: Will you use "Sass", "LESS", or "none" for CSS with this project?',
-			default: 'Sass'
+			default: 'LESS'
 		}
 	], function( err, props ) {
 		props.keywords = [];
 		props.version = '0.1.0';
 		props.devDependencies = {
-			'grunt': '~0.4.1',
-			'matchdep': '~0.1.2',
-			'grunt-contrib-concat': '~0.1.2',
-			'grunt-contrib-uglify': '~0.1.1',
-			'grunt-contrib-cssmin': '~0.6.0',
-			'grunt-contrib-jshint': '~0.1.1',
-			'grunt-contrib-nodeunit': '~0.1.2',
-			'grunt-contrib-watch': '~0.2.0',
+			'grunt': '~0.4',
+			'matchdep': '~0.1',
+			'grunt-contrib-concat': '~0.1',
+			'grunt-contrib-uglify': '~0.1',
+			'grunt-contrib-cssmin': '~0.6',
+			'grunt-contrib-jshint': '~0.1',
+			'grunt-contrib-nodeunit': '~0.1',
+			'grunt-contrib-watch': '~0.2'
 		};
 		
 		// Sanitize names where we need to for PHP/JS
@@ -74,7 +74,7 @@ exports.template = function( grunt, init, done ) {
 				delete files[ 'assets/css/sass/' + props.js_safe_name + '.scss'];
 				delete files[ 'assets/css/src/' + props.js_safe_name + '.css' ];
 				
-				props.devDependencies["grunt-contrib-less"] = "~0.5.0";
+				props.devDependencies["grunt-contrib-less"] = "~0.5";
 				props.css_type = 'less';
 				break;
 			case 'n':
@@ -89,7 +89,7 @@ exports.template = function( grunt, init, done ) {
 				delete files[ 'assets/css/less/' + props.js_safe_name + '.less'];
 				delete files[ 'assets/css/src/' + props.js_safe_name + '.css' ];
 				
-				props.devDependencies["grunt-contrib-sass"] = "~0.2.2";
+				props.devDependencies["grunt-contrib-sass"] = "~0.2";
 				props.css_type = 'sass';
 				break;
 		}
