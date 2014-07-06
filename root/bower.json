@@ -1,0 +1,8 @@
+{
+    "name": "{%= prefix %}",
+    "version": "0.1.0",
+    "dependencies": {
+        "3l": "~1"
+    },
+    "private": true
+}

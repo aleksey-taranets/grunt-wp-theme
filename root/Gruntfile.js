@@ -16,18 +16,15 @@ module.exports = function( grunt ) {
 					' * Licensed GPLv2+' +
 					' */\n'
 			},
-			{%= js_safe_name %}: {
-				src: [
-					'assets/js/src/{%= js_safe_name %}.js'
-				],
-				dest: 'assets/js/{%= js_safe_name %}.js'
-			}
+            main: {
+                src: ['assets/js/src/plugins.js', 'assets/js/src/main.js'],
+                dest: 'assets/js/main.js'
+            }
 		},
 		jshint: {
 			browser: {
 				all: [
-					'assets/js/src/**/*.js',
-					'assets/js/test/**/*.js'
+					'assets/js/src/**/*.js'
 				],
 				options: {
 					jshintrc: '.jshintrc'
@@ -45,7 +42,7 @@ module.exports = function( grunt ) {
 		uglify: {
 			all: {
 				files: {
-					'assets/js/{%= js_safe_name %}.min.js': ['assets/js/{%= js_safe_name %}.js']
+					'assets/js/main.min.js': ['assets/js/main.js']
 				},
 				options: {
 					banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -59,14 +56,11 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
-		test:   {
-			files: ['assets/js/test/**/*.js']
-		},
 		{% if ('sass' === css_type) { %}
 		sass:   {
 			all: {
 				files: {
-					'assets/css/{%= js_safe_name %}.css': 'assets/css/sass/{%= js_safe_name %}.scss'
+					'assets/css/all.css': 'assets/css/sass/theme.scss'
 				}
 			}
 		},
@@ -74,7 +68,7 @@ module.exports = function( grunt ) {
 		less:   {
 			all: {
 				files: {
-					'assets/css/{%= js_safe_name %}.css': 'assets/css/less/{%= js_safe_name %}.less'
+					'assets/css/all.css': 'assets/css/less/theme.less'
 				}
 			}
 		},
@@ -91,10 +85,10 @@ module.exports = function( grunt ) {
 				expand: true,
 				{% if ('sass' === css_type || 'less' === css_type) { %}
 				cwd: 'assets/css/',
-				src: ['{%= js_safe_name %}.css'],
+				src: ['all.css'],
 				{% } else { %}
 				cwd: 'assets/css/src/',
-				src: ['{%= js_safe_name %}.css'],
+				src: ['all.css'],
 				{% } %}
 				dest: 'assets/css/',
 				ext: '.min.css'
@@ -138,11 +132,11 @@ module.exports = function( grunt ) {
 
 	// Default task.
 	{% if ('sass' === css_type) { %}
-	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin'] );
+	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin', 'watch'] );
 	{% } else if ('less' === css_type) { %}
-	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'less', 'cssmin'] );
+	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'less', 'cssmin', 'watch'] );
 	{% } else { %}
-	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'cssmin'] );
+	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'cssmin', 'watch'] );
 	{% } %}
 
 	grunt.util.linefeed = '\n';

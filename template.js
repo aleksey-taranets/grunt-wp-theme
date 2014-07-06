@@ -8,6 +8,8 @@
 
 'use strict';
 
+var exec = require("child_process").exec;
+
 // Basic template description
 exports.description = 'Create a WordPress theme.';
 
@@ -32,9 +34,9 @@ exports.template = function( grunt, init, done ) {
 		},
 		init.prompt( 'description', 'Wordpress Theme' ),
 		init.prompt( 'homepage', 'http://alirta.com' ),
-		init.prompt( 'author_name' ),
-		init.prompt( 'author_email' ),
-		init.prompt( 'author_url' ),
+		init.prompt( 'author_name', 'Aleksey Taranets' ),
+		init.prompt( 'author_email', 'markup.javascript@gmail.com' ),
+		init.prompt( 'author_url', 'alirta.com' ),
 		{
 			name: 'css_type',
 			message: 'CSS Preprocessor: Will you use "Sass", "LESS", or "none" for CSS with this project?',
@@ -71,23 +73,23 @@ exports.template = function( grunt, init, done ) {
 
 		switch( props.css_type.toLowerCase()[0] ) {
 			case 'l':
-				delete files[ 'assets/css/sass/' + props.js_safe_name + '.scss'];
-				delete files[ 'assets/css/src/' + props.js_safe_name + '.css' ];
+				delete files[ 'assets/css/sass/theme.scss'];
+				delete files[ 'assets/css/src/all.css' ];
 				
 				props.devDependencies["grunt-contrib-less"] = "~0.5";
 				props.css_type = 'less';
 				break;
 			case 'n':
 			case undefined:
-				delete files[ 'assets/css/less/' + props.js_safe_name + '.less'];
-				delete files[ 'assets/css/sass/' + props.js_safe_name + '.scss'];
+				delete files[ 'assets/css/less/theme.less'];
+				delete files[ 'assets/css/sass/theme.scss'];
 				
 				props.css_type = 'none';
 				break;
 			// SASS is the default
 			default:
-				delete files[ 'assets/css/less/' + props.js_safe_name + '.less'];
-				delete files[ 'assets/css/src/' + props.js_safe_name + '.css' ];
+				delete files[ 'assets/css/less/theme.less'];
+				delete files[ 'assets/css/src/all.css' ];
 				
 				props.devDependencies["grunt-contrib-sass"] = "~0.2";
 				props.css_type = 'sass';
@@ -101,8 +103,15 @@ exports.template = function( grunt, init, done ) {
 		
 		// Generate package.json file
 		init.writePackageJSON( 'package.json', props );
-		
-		// Done!
-		done();
+
+
+        exec("bower install", function(error, stdout, stderr) {
+            if (error !== null) {
+                console.log("Error: " + error);
+            }
+
+            // Done!
+            done();
+        });
 	});
 };
