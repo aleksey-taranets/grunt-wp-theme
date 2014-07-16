@@ -109,12 +109,6 @@ function optionsframework_options() {
         'textarea_rows' => 5,
         'tinymce' => array( 'plugins' => 'wordpress' )
     );
-    $wp_editor_settings2 = array(
-        'wpautop' => true, // Default
-        'media_buttons' => true,
-        'textarea_rows' => 7,
-        'tinymce' => array( 'plugins' => 'wordpress' )
-    );
 
     // START THEME OPTIONS
 
@@ -124,80 +118,63 @@ function optionsframework_options() {
         'type' => 'heading');
 
     $options[] = array(
-        'name' => __('Блок банера (шапка)', 'options_framework_theme'),
-        'id' => 'banner_block',
+        'name' => __('Информация в шапке'),
+        'id' => 'header-info',
         'type' => 'editor',
         'settings' => $wp_editor_settings );
 
     $options[] = array(
-        'name' => __('ID города для погоды', 'options_framework_theme'),
-        'desc' => 'В <a href="http://weather.yandex.ru/static/cities.xml">списке городов</a> выберите ID',
-        'id' => 'weather',
-        'class' => 'mini',
-        'type' => 'text');
+        'name' => __('Информация в подвале'),
+        'id' => 'footer-info',
+        'type' => 'editor',
+        'settings' => $wp_editor_settings );
 
     $options[] = array(
-        'name' => __('Главная страница', 'options_framework_theme'),
+        'name' => __('Контакты', 'options_framework_theme'),
         'id'   => 'tab2',
         'type' => 'heading');
 
     $options[] = array(
-        'name' => __('Блоки главной страницы', 'options_framework_theme'),
-        'desc' => 'Красные блоки редактируются в данной панеле управления, зеленые на странице виджетов <br/> <img src="'.get_template_directory_uri().'/images/frontpage.png" />',
-        'type' => 'info');
-
-    $options[] = array(
-        'name' => __('Блок №1. Заголовок', 'options_framework_theme'),
-        'id' => 'b1_title',
+        'name' => __('Основная форма', 'options_framework_theme'),
+        'desc' => __('шорткод CF7', 'options_framework_theme'),
+        'id' => 'main-form',
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Блок №1. Категория статей', 'options_framework_theme'),
-        'id' => 'b1_cat',
-        'type' => 'select',
-        'options' => $options_categories);
+        'name' => __('Карта', 'options_framework_theme'),
+        'id' => 'map',
+        'type' => 'upload');
 
     $options[] = array(
-        'name' => __('Блок №2. Статья с фотографиями', 'options_framework_theme'),
-        'id' => 'b2_post',
-        'type' => 'select',
-        'options' => $options_posts);
-
-    $options[] = array(
-        'name' => __('Блок №2. Страница добавления фото', 'options_framework_theme'),
-        'id' => 'b2_page',
-        'type' => 'select',
-        'options' => $options_pages);
-
-    $options[] = array(
-        'name' => __('Блок №3. Контент блока', 'options_framework_theme'),
-        'id' => 'b3_content',
-        'type' => 'editor',
-        'settings' => $wp_editor_settings2 );
-
-    $options[] = array(
-        'name' => __('Блок №4. Заголовок', 'options_framework_theme'),
-        'id' => 'b4_title',
+        'name' => __('Форма записи (модальное окно)', 'options_framework_theme'),
+        'desc' => __('шорткод CF7', 'options_framework_theme'),
+        'id' => 'appointment-form',
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Блок №4. Категория статей', 'options_framework_theme'),
-        'id' => 'b4_cat',
-        'type' => 'select',
-        'options' => $options_categories);
+        'name' => __('Социальные сети', 'options_framework_theme'),
+        'id'   => 'tab3',
+        'type' => 'heading');
 
     $options[] = array(
-        'name' => __('Блок №5. Заголовок', 'options_framework_theme'),
-        'id' => 'b5_title',
+        'name' => __('Вконтакте', 'options_framework_theme'),
+        'id' => 'vk',
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Блок №5. Категория статей', 'options_framework_theme'),
-        'id' => 'b5_cat',
-        'type' => 'select',
-        'options' => $options_categories);
+        'name' => __('Одноклассники', 'options_framework_theme'),
+        'id' => 'od',
+        'type' => 'text');
 
+    $options[] = array(
+        'name' => __('Facebook', 'options_framework_theme'),
+        'id' => 'fb',
+        'type' => 'text');
 
+    $options[] = array(
+        'name' => __('Twitter', 'options_framework_theme'),
+        'id' => 'tw',
+        'type' => 'text');
 
     /*$options[] = array(
         'name' => __('Дополнительный блок шапки', 'options_framework_theme'),
