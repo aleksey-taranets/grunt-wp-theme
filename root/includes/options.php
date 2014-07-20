@@ -105,7 +105,7 @@ function optionsframework_options() {
 
     $wp_editor_settings = array(
         'wpautop' => true, // Default
-        'media_buttons' => true,
+        'media_buttons' => false,
         'textarea_rows' => 5,
         'tinymce' => array( 'plugins' => 'wordpress' )
     );
@@ -119,61 +119,33 @@ function optionsframework_options() {
 
     $options[] = array(
         'name' => __('Информация в шапке'),
-        'id' => 'header-info',
+        'id' => 'header_info',
         'type' => 'editor',
         'settings' => $wp_editor_settings );
 
     $options[] = array(
-        'name' => __('Информация в подвале'),
-        'id' => 'footer-info',
-        'type' => 'editor',
-        'settings' => $wp_editor_settings );
-
-    $options[] = array(
-        'name' => __('Контакты', 'options_framework_theme'),
-        'id'   => 'tab2',
-        'type' => 'heading');
-
-    $options[] = array(
-        'name' => __('Основная форма', 'options_framework_theme'),
-        'desc' => __('шорткод CF7', 'options_framework_theme'),
-        'id' => 'main-form',
+        'name' => __('Форма заказа звонка', 'options_framework_theme'),
+        'id' => 'callback',
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Карта', 'options_framework_theme'),
-        'id' => 'map',
-        'type' => 'upload');
-
-    $options[] = array(
-        'name' => __('Форма записи (модальное окно)', 'options_framework_theme'),
-        'desc' => __('шорткод CF7', 'options_framework_theme'),
-        'id' => 'appointment-form',
+        'name' => __('Телефон (стационарный)', 'options_framework_theme'),
+        'id' => 'tel1',
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Социальные сети', 'options_framework_theme'),
-        'id'   => 'tab3',
-        'type' => 'heading');
-
-    $options[] = array(
-        'name' => __('Вконтакте', 'options_framework_theme'),
-        'id' => 'vk',
+        'name' => __('Телефон (дополнительный)', 'options_framework_theme'),
+        'id' => 'tel2',
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Одноклассники', 'options_framework_theme'),
-        'id' => 'od',
+        'name' => __('Контактный email (подвал)', 'options_framework_theme'),
+        'id' => 'contact_email',
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Facebook', 'options_framework_theme'),
-        'id' => 'fb',
-        'type' => 'text');
-
-    $options[] = array(
-        'name' => __('Twitter', 'options_framework_theme'),
-        'id' => 'tw',
+        'name' => __('Адрес (подвал)', 'options_framework_theme'),
+        'id' => 'address',
         'type' => 'text');
 
     /*$options[] = array(

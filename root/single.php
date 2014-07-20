@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 <section>
+    <?php get_template_part( 'templates/breadcrumbs' ); ?>
     <?php if (have_posts()) : ?>
         <?php while (have_posts()) : the_post(); ?>
             <article>
