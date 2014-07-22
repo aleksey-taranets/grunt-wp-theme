@@ -2,6 +2,9 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<title><?php wp_title(' | ', true, 'right'); ?><?php bloginfo('name'); ?></title>
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 	<?php wp_head(); ?>
 </head>
