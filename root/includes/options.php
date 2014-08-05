@@ -118,34 +118,67 @@ function optionsframework_options() {
         'type' => 'heading');
 
     $options[] = array(
-        'name' => __('Информация в шапке'),
+        'name' => __('Слоган', 'options_framework_theme'),
+        'id' => 'slogan',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => __('Режим работы'),
         'id' => 'header_info',
+        'type' => 'textarea');
+
+    $options[] = array(
+        'name' => __('Телефон', 'options_framework_theme'),
+        'id' => 'tel',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => __('Подзаголовок акций', 'options_framework_theme'),
+        'id' => 'promo-subtitle',
+        'type' => 'text');
+
+    $options[] = array(
+        'name' => __('Дополнительная информация главной страницы', 'options_framework_theme'),
+        'id' => 'additional_content',
+        'type' => 'select',
+        'options' => $options_pages);
+
+    $options[] = array(
+        'name' => __('Страница отзывов', 'options_framework_theme'),
+        'id' => 'comments_page',
+        'type' => 'select',
+        'options' => $options_pages);
+
+    $options[] = array(
+        'name' => __('Страница формы заказа', 'options_framework_theme'),
+        'id' => 'order_page',
+        'type' => 'select',
+        'options' => $options_pages);
+
+    $options[] = array(
+        'name' => __('Информация в подвале', 'options_framework_theme'),
+        'id' => 'footer_info',
         'type' => 'editor',
         'settings' => $wp_editor_settings );
 
     $options[] = array(
-        'name' => __('Форма заказа звонка', 'options_framework_theme'),
-        'id' => 'callback',
+        'name' => __('Контактные формы', 'options_framework_theme'),
+        'id'   => 'tab2',
+        'type' => 'heading');
+
+    $options[] = array(
+        'name' => __('Заказать звонок (форма CF7)', 'options_framework_theme'),
+        'id' => 'form',
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Телефон (стационарный)', 'options_framework_theme'),
-        'id' => 'tel1',
+        'name' => __('Вызвать замерщика (форма CF7)', 'options_framework_theme'),
+        'id' => 'form2',
         'type' => 'text');
 
     $options[] = array(
-        'name' => __('Телефон (дополнительный)', 'options_framework_theme'),
-        'id' => 'tel2',
-        'type' => 'text');
-
-    $options[] = array(
-        'name' => __('Контактный email (подвал)', 'options_framework_theme'),
-        'id' => 'contact_email',
-        'type' => 'text');
-
-    $options[] = array(
-        'name' => __('Адрес (подвал)', 'options_framework_theme'),
-        'id' => 'address',
+        'name' => __('Форма выбора района (форма CF7)'),
+        'id' => 'region',
         'type' => 'text');
 
     /*$options[] = array(
