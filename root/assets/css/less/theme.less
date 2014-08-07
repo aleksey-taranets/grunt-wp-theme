@@ -5,3 +5,32 @@
  * Copyright (c) {%= grunt.template.today('yyyy') %} {%= author_name %}
  * Licensed under the GPLv2+ license.
  */
+
+@import "../../../bower_components/3l/3L/3L";
+
+.reset();
+
+@pageWidth: 1003px;
+@contentWidth: 684px;
+@asideWidth: 296px;
+
+.font-face('MyriadPro', 'MyriadPro', '../../assets/fonts/');
+html {
+    height: 100%;
+}
+body {
+    background:#f8f8f8 url('../../images/body.gif') repeat-x 0 100%;
+    font:16px 'MyriadPro';
+    position: relative;
+    height: 100%;
+    color: #161616;
+}
+a {
+    text-decoration: underline;
+    color: #2d2d2d;
+
+    &:hover {
+        text-decoration:none;
+        color: #1dc3c6;
+    }
+}
