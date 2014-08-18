@@ -72,12 +72,12 @@ exports.template = function( grunt, init, done ) {
 		var files = init.filesToCopy( props );
 
 		switch( props.css_type.toLowerCase()[0] ) {
-			case 'l':
-				delete files[ 'assets/css/sass/theme.scss'];
+			case 's':
+				delete files[ 'assets/css/less/theme.less'];
 				delete files[ 'assets/css/src/all.css' ];
 				
-				props.devDependencies["grunt-contrib-less"] = "~0.5";
-				props.css_type = 'less';
+				props.devDependencies["grunt-contrib-sass"] = "~0.2";
+				props.css_type = 'sass';
 				break;
 			case 'n':
 			case undefined:
@@ -88,11 +88,11 @@ exports.template = function( grunt, init, done ) {
 				break;
 			// SASS is the default
 			default:
-				delete files[ 'assets/css/less/theme.less'];
+				delete files[ 'assets/css/sass/theme.scss'];
 				delete files[ 'assets/css/src/all.css' ];
 				
-				props.devDependencies["grunt-contrib-sass"] = "~0.2";
-				props.css_type = 'sass';
+				props.devDependencies["grunt-contrib-less"] = "~0.5";
+				props.css_type = 'less';
 				break;
 		}
 		
