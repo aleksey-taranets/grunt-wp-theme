@@ -2,7 +2,7 @@
     "name": "alirta",
     "version": "0.1.0",
     "dependencies": {
-        "3l": "~1"
+        "3l": "~1",
 	"jquery": "~1.10.2"
     },
     "private": true
