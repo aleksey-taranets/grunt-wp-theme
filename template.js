@@ -47,13 +47,13 @@ exports.template = function( grunt, init, done ) {
 		props.version = '0.1.0';
 		props.devDependencies = {
 			'grunt': '~0.4',
-			'matchdep': '~0.1',
-			'grunt-contrib-concat': '~0.1',
-			'grunt-contrib-uglify': '~0.1',
-			'grunt-contrib-cssmin': '~0.6',
-			'grunt-contrib-jshint': '~0.1',
-			'grunt-contrib-nodeunit': '~0.1',
-			'grunt-contrib-watch': '~0.2'
+			'matchdep': '~0.3',
+			'grunt-contrib-concat': '~0.5',
+			'grunt-contrib-uglify': '~0.5',
+			'grunt-contrib-cssmin': '~0.10',
+			'grunt-contrib-jshint': '~0.10',
+			'grunt-contrib-nodeunit': '~0.4',
+			'grunt-contrib-watch': '~0.6'
 		};
 		
 		// Sanitize names where we need to for PHP/JS
@@ -91,7 +91,7 @@ exports.template = function( grunt, init, done ) {
 				delete files[ 'assets/css/sass/theme.scss'];
 				delete files[ 'assets/css/src/all.css' ];
 				
-				props.devDependencies["grunt-contrib-less"] = "~0.5";
+				props.devDependencies["grunt-contrib-less"] = "~0.11";
 				props.css_type = 'less';
 				break;
 		}

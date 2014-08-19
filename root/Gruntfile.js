@@ -67,6 +67,11 @@ module.exports = function( grunt ) {
 		{% } else if ('less' === css_type) { %}
 		less:   {
 			all: {
+                options : {
+                    paths: './bower_components/3l/3L',
+                        rootpath: './assets/',
+                        relativeUrls: true
+                },
 				files: {
 					'assets/css/all.css': 'assets/css/less/theme.less'
 				}
