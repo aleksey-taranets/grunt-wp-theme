@@ -121,7 +121,8 @@ module.exports = function( grunt ) {
 				files: ['assets/css/src/*.css'],
 				tasks: ['cssmin'],
 				options: {
-					debounceDelay: 500
+					debounceDelay: 100,
+		                        livereload: true
 				}
 			},
 			{% } %}
@@ -129,8 +130,8 @@ module.exports = function( grunt ) {
 				files: ['assets/js/src/**/*.js', 'assets/js/vendor/**/*.js'],
 				tasks: ['jshint', 'concat', 'uglify'],
 				options: {
-					debounceDelay: 500
-				}
+					debounceDelay: 100,
+			                livereload: true				}
 			}
 		}
 	} );
