@@ -126,6 +126,13 @@ module.exports = function( grunt ) {
 				}
 			},
 			{% } %}
+			html: {
+		                files: ['*.html'],
+		                options: {
+		                    debounceDelay: 300,
+		                    livereload:true
+		                }
+	                },
 			scripts: {
 				files: ['assets/js/src/**/*.js', 'assets/js/vendor/**/*.js'],
 				tasks: ['jshint', 'concat', 'uglify'],
