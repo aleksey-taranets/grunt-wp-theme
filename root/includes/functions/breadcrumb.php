@@ -8,8 +8,9 @@ function the_breadcrumb() {
         echo get_option('home');
         echo '">';
         echo 'Главная';
-        echo '</a></li>'.$sep.'<li>';
+        echo '</a></li>'.$sep;
         if (is_category() || is_single()) {
+            echo '<li>';
             the_category(' </li>'.$sep.'<li> ');
             if (is_single()) {
                 echo '</li>'.$sep.'<li>';
