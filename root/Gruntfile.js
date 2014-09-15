@@ -105,7 +105,8 @@ module.exports = function( grunt ) {
 				files: ['assets/css/sass/*.scss'],
 				tasks: ['sass', 'cssmin'],
 				options: {
-					debounceDelay: 500
+					debounceDelay: 500,
+                    livereload:true
 				}
 			},
 			{% } else if ('less' === css_type) { %}
@@ -113,7 +114,8 @@ module.exports = function( grunt ) {
 				files: ['assets/css/less/*.less'],
 				tasks: ['less', 'cssmin'],
 				options: {
-					debounceDelay: 500
+					debounceDelay: 500,
+                    livereload:true
 				}
 			},
 			{% } else { %}
@@ -122,23 +124,24 @@ module.exports = function( grunt ) {
 				tasks: ['cssmin'],
 				options: {
 					debounceDelay: 100,
-		                        livereload: true
+                    livereload: true
 				}
 			},
 			{% } %}
 			html: {
-		                files: ['*.html'],
-		                options: {
-		                    debounceDelay: 300,
-		                    livereload:true
-		                }
-	                },
+                files: ['*.html'],
+                options: {
+                    debounceDelay: 300,
+                    livereload:true
+                }
+            },
 			scripts: {
 				files: ['assets/js/src/**/*.js', 'assets/js/vendor/**/*.js'],
 				tasks: ['jshint', 'concat', 'uglify'],
 				options: {
 					debounceDelay: 100,
-			                livereload: true				}
+                    livereload: true
+                }
 			}
 		}
 	} );
