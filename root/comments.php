@@ -1,9 +1,7 @@
 <?php
-
 // Do not delete these lines
 if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
 	die ('Please do not load this page directly. Thanks!');
-
 if ( post_password_required() ) {
 	?> <p>Эта статья защищена паролем. Введите пароль, что бы увидеть коментарии.</p> <?php
 	return;
@@ -39,38 +37,27 @@ function theme_comment($comment, $args, $depth) {
 ?>
 
 <?php if ( have_comments() ) : ?>
-
-<div class="section comments" id="comments">
-
-	<ol class="commentlist">
-		<?php wp_list_comments(array(
-			'callback' => 'theme_comment',
-			'end-callback' => 'theme_comment_end'
-			)); ?>
-	</ol>
-
-	<div class="navigation">
-		<div class="next"><?php previous_comments_link('&laquo; Старые Комментарии') ?></div>
-		<div class="prev"><?php next_comments_link('Новые Комментарии &raquo;') ?></div>
-	</div>
-
-</div>
-
- <?php else : // this is displayed if there are no comments so far ?>
-
+    <div class="section comments" id="comments">
+        <ul class="comment-list">
+            <?php wp_list_comments(array(
+                'callback' => 'theme_comment',
+                'end-callback' => 'theme_comment_end'
+                )); ?>
+        </ul>
+        <div class="navigation">
+            <div class="next"><?php previous_comments_link('&laquo; Старые Комментарии') ?></div>
+            <div class="prev"><?php next_comments_link('Новые Комментарии &raquo;') ?></div>
+        </div>
+    </div>
+<?php else : // this is displayed if there are no comments so far ?>
 	<?php if ( comments_open() ) : ?>
 		<!-- If comments are open, but there are no comments. -->
-
-	 <?php else : // comments are closed ?>
+	<?php else : // comments are closed ?>
 		<!-- If comments are closed. -->
-
 	<?php endif; ?>
-	
 <?php endif; ?>
 
-
 <?php if ( comments_open() ) : ?>
-
 <div class="section respond" id="respond">
 	<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
 		<fieldset>
@@ -79,39 +66,30 @@ function theme_comment($comment, $args, $depth) {
 			<div class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></div>
 		
 			<?php if ( get_option('comment_registration') && !is_user_logged_in() ) : ?>
-			<p>Вы должны <a href="<?php echo wp_login_url( get_permalink() ); ?>">залогинеться</a> для возможности оставлять комментарии.</p>
+    			<p>Вы должны <a href="<?php echo wp_login_url( get_permalink() ); ?>">залогинеться</a> для возможности оставлять комментарии.</p>
 			<?php else : ?>
 			
 			<?php if ( is_user_logged_in() ) : ?>
-
-			<p><a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Выйти &raquo;</a></p>
-			
-			<dl>
-
+			    <p><a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Выйти &raquo;</a></p>
 			<?php else : ?>
-			
-			<dl>
-				<dt><label for="author">Имя</label></dt>
-				<dd><input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" /></dd>
-				<dt><label for="email">E-Mail (не опубликовывается)</label></dt>
-				<dd><input type="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" /></dd>
-				<dt><label for="url">Web сайт</label></dt>
-				<dd><input type="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" /></dd>
+				<label for="author">Имя</label>
+				<input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" />
+				<label for="email">E-Mail (не опубликовывается)</label>
+				<input type="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" />
+				<label for="url">Web сайт</label>
+				<input type="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" />
 			<?php endif; ?>
-				<dt><label for="comment">Комметарий</label></dt>
-				<dd><textarea name="comment" id="comment" cols="100%" rows="10"></textarea></dd>
-				<dd><input name="submit" type="submit" id="submit" value="Отправить" /></dd>
-			</dl>
-			
+
+				<label for="comment">Комметарий</label>
+				<textarea name="comment" id="comment" cols="100%" rows="10"></textarea>
+				<input name="submit" type="submit" id="submit" value="Отправить" />
+
 			<?php
 				comment_id_fields();
 				do_action('comment_form', $post->ID);
 			?>
-			
 			<?php endif; ?>
-
 		</fieldset>
 	</form>
 </div>
-
 <?php endif; ?>
